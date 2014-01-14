@@ -1,0 +1,45 @@
+<h2>{{ app.stringId }}</h2>
+
+<div class="form-horizontal well well-small">
+	<div>
+		<label class="control-label">Application Title:</label>
+		<div class="controls">
+			<kb-inline-edit value="nameEdit" edit-title="Edit title" placeholder="Click to edit" on-save="saveName()"></kb-inline-edit>
+		</div>
+	</div>
+</div>
+
+<table class="table table-stripped">
+	<thead>
+		<tr>
+			<th>Version</th>
+			<th>Created</th>
+			<th>Active</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="version in app.versions">
+			<td>{{ version.version }}</td>
+			<td>{{ version.created | kbdate:'fullDate' }}</td>
+			<td>
+				<i class="fa fa-check-square-o" ng-show="version.isActive"></i>
+				<i class="fa fa-square-o"
+                   ng-hide="version.isActive"
+                   tooltip="Activate version"
+                   kb-confirm
+                   header="Activate version of {{app.stringId}} ?"
+                   message="Do you want to really activate version {{version.version}}? Current active version will be disabled."
+                   confirm-label="Activate"
+                   confirm-type="success"
+                   on-confirm="activateVersion(version.id)"
+                   ></i>
+			</td>
+			<td>
+				<a target="_blank" href="/admin/projects-new/{{ preview.projectId }}/extractor/?app={{ app.stringId }}&version={{ version.version }}" ng-disabled="!preview.projectId">
+					Preview
+				</a>
+			</td>
+		</tr>
+	</tbody>
+</table>

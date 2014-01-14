@@ -4,23 +4,20 @@ angular.module('kbc.manageApps')
     "$scope"
     "kbSapiService"
     "kbc.manageApps.config"
-    ($scope, storageService, config) ->
+    "$http"
+    ($scope, storageService, config, $http) ->
+
+      $http(
+        url: '/admin/manage-apps/list'
+        method: 'GET'
+      ).success((data) ->
+        console.log 'data', data
+      )
 
       $scope.appName = config.appName
       $scope.buckets = []
       $scope.bucketsLoading = false
 
-      $scope.refresh = ->
-        $scope.bucketsLoading = true
-        storageService
-          .getBuckets()
-          .success( (buckets) ->
-            $scope.bucketsLoading = false
-            $scope.buckets = buckets
-          )
-          .error( ->
-            $scope.bucketsLoading  = false
-          )
 
-      $scope.refresh()
+
   ])

@@ -34,6 +34,7 @@ angular
 
   # third party library modules
   'ui.bootstrap'
+  'ui.select2'
 ])
 .config([
   '$routeProvider'
@@ -55,6 +56,14 @@ angular
         templateUrl: appVersionProvider.versionUrl("views/pages/index.html")
         controller: 'IndexController'
       )
+    .when('/apps/:id',
+      templateUrl: appVersionProvider.versionUrl("views/pages/app-detail.html")
+      controller: "AppDetailController"
+      resolve:
+        app: ["kbManageAppsApi", "$route", (api, $route) ->
+          api.detail($route.current.params.id)
+        ]
+    )
     .otherwise(
         redirectTo: '/'
       )

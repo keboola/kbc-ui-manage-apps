@@ -1,0 +1,43 @@
+<div class="page-header">
+    <div class="container">
+        <h4>Manage apps</h4>
+    </div>
+</div>
+
+<div class="container" ng-controller="AppController">
+    <div class="row well">
+
+        <div class="col-md-4">
+            <button class="btn btn-primary btn-sm" ng-click="registerNewAppModal()">
+                <i class="icon-plus"></i>
+                Register new application/version
+            </button>
+        </div>
+
+        <div class="col-md-7 form-inline">
+            <label class="control-label">Preview project</label>
+            <select id="previewProjectId"  style="width: 300px" ui-select2 placeholder="Choose project for preview..." ng-model="preview.projectId" >
+                <option ng-repeat="project in projects" value="{{ project.id }}">{{ project.name }}</option>
+            </select>
+        </div>
+
+        <div class="col-md-1">
+            <kb-loader ng-show="loading" is-loading="loading"></kb-loader>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <ul class="nav nav-pills nav-stacked" ng-cloak>
+                <li ng-repeat="app in apps" ng-class="{'active': app.id == currentApp}">
+                    <a ng-click="openApp(app.id)">{{ app.stringId }}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            <ng-view></ng-view>
+        </div>
+    </div>
+</div>

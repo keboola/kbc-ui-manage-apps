@@ -19,12 +19,13 @@
 
         <!-- build:css(app) styles/libs.css -->
         <link rel="stylesheet" href="components/angular-kb/docs/build/angular-kb.css">
+        <link rel="stylesheet" href="components/select2/select2.css">
         <!-- endbuild -->
 </head>
   <body>
 
   <!-- Add your site or application content here -->
-  <ng-view></ng-view>
+  <ng-include src="'views/pages/wrapper.html'"></ng-include>
 
   <script src="components/jquery/jquery.js"></script>
         <!-- build:js scripts/libs.js -->
@@ -38,11 +39,17 @@
         <script src="components/angular-kb/docs/build/angular-kb.js"></script>
         <script src="components/angular-kb-accordion/dist/angular-kb-accordion.js"></script>
         <script src="components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+        <script src="components/select2/select2.js"></script>
+        <script src="components/angular-ui-select2/src/select2.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/index.js"></script>
+        <script src="scripts/controllers/app-controller.js"></script>
+        <script src="scripts/controllers/app-detail-controller.js"></script>
+        <script src="scripts/controllers/register-new-app-controller.js"></script>
+        <script src="scripts/services/api.js"></script>
         <!-- endbuild -->
 <script src="bootstrap.js"></script></body>
 </html>

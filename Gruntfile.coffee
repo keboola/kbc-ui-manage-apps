@@ -8,6 +8,11 @@ module.exports = (grunt) ->
 
   require('time-grunt')(grunt)
 
+  proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+
+  mountFolder = (connect, dir) ->
+    connect.static require("path").resolve(dir)
+
   grunt.initConfig(
     yeoman:
       app: require('./bower.json').appPath || 'app'
@@ -38,6 +43,13 @@ module.exports = (grunt) ->
         ]
 
     connect:
+      proxies: [
+        {
+          context: '/admin'
+          host: 'martin-connection-devel.keboola.com'
+          changeOrigin: true
+        }
+      ]
       options:
         port: 9000
         hostname: "localhost"
@@ -47,6 +59,12 @@ module.exports = (grunt) ->
         options:
           open: true
           base: ['.tmp', '<%= yeoman.app %>']
+          middleware: (connect) ->
+            [
+              proxySnippet
+              mountFolder(connect, '.tmp')
+              mountFolder(connect, 'app')
+            ]
 
       test:
         options:
@@ -316,6 +334,7 @@ module.exports = (grunt) ->
       "coffee:bootstrap"
       "compass:server"
       "copy:styles"
+      'configureProxies'
       "connect:livereload"
       "watch"
     ])
