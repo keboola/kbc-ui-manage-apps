@@ -47,6 +47,7 @@ module.exports = (grunt) ->
         {
           context: '/admin'
           host: 'connection.keboola.com'
+          port: 443
           changeOrigin: true
           https: true
         }
