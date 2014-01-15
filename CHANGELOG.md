@@ -1,3 +1,6 @@
+# 0.0.3
+  *  ng-progress instead of loader
+
 # 0.0.2
  * Sort apps by string id
  * Build bugfixes
