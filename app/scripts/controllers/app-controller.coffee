@@ -45,11 +45,4 @@ angular.module('kbc.manageApps')
         $scope.currentApp = route.params?.id
       )
 
-      $rootScope.$on('$routeChangeStart', ->
-        $scope.loading = true
-      )
-
-      $rootScope.$on('$routeChangeSuccess', ->
-        $scope.loading = false
-      )
   ])

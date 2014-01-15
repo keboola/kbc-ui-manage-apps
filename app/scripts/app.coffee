@@ -35,6 +35,7 @@ angular
   # third party library modules
   'ui.bootstrap'
   'ui.select2'
+  'ngProgress'
 ])
 .config([
   '$routeProvider'
@@ -88,4 +89,20 @@ angular
     $route.reload()
 
 ])
+.run([
+    '$rootScope'
+    'ngProgress'
+    ($rootScope, ngProgress) ->
+
+      $rootScope.$on '$routeChangeStart',  ->
+        ngProgress.color('green')
+        ngProgress.height(1)
+        ngProgress.reset()
+        ngProgress.start()
+
+      _.each ['$routeChangeSuccess', '$routeChangeError'], (event) ->
+        $rootScope.$on event, ->
+          ngProgress.complete()
+
+  ])
 
