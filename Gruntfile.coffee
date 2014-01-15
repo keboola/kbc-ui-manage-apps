@@ -226,7 +226,9 @@ module.exports = (grunt) ->
           cwd: "<%= yeoman.app %>"
           dest: "release"
           src: ["components/font-awesome/fonts/**"]
-
+        ,
+          dest: "release/styles/select2.png"
+          src: ["<%= yeoman.dist %>/components/select2/select2.png"]
         ]
 
     'aws_s3':
