@@ -78,26 +78,14 @@ angular
   'kbSapiService'
   'kbAppVersion'
   'kbc.manageApps.config'
-  ($rootScope, storageErrorHandler, storageService, appVersion, appConfig) ->
-    getComponentConfig = (id) ->
-      component = _.find(appConfig.components, (component) ->
-        component.id == id
-      )
-      throw new Error("Component #{id} not found") if !component
-      component
-
-    # wire storage error handler - trigger error modal on error
-    $rootScope.$on('storageError', (event, errorResponse) ->
-      storageErrorHandler.handleError(errorResponse)
-    )
-
-    # set tokens and urls for SAPI and TAPI
-    storageService.setVerifiedToken(appConfig.sapi.token)
-    storageService.endpoint = appConfig.sapi.endpoint
+  '$route'
+  ($rootScope, storageErrorHandler, storageService, appVersion, appConfig, $route) ->
 
     # put configs to rootScope to be simple accesible in all views and controllers
     $rootScope.appVersion = appVersion
     $rootScope.appConfig = appConfig
+
+    $route.reload()
 
 ])
 
