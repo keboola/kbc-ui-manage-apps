@@ -30,7 +30,7 @@
         <div class="col-md-3">
 
             <ul class="nav nav-pills nav-stacked" ng-cloak>
-                <li ng-repeat="app in apps" ng-class="{'active': app.id == currentApp}">
+                <li ng-repeat="app in apps | orderBy:'stringId'" ng-class="{'active': app.id == currentApp}">
                     <a ng-click="openApp(app.id)">{{ app.stringId }}</a>
                 </li>
             </ul>
