@@ -323,7 +323,6 @@ module.exports = (grunt) ->
     grunt.log.ok(appS3FullPath() + "manifest.json")
 
   grunt.registerTask "upload-release", [
-    "build"
     "read-revision"
     "generate-manifest"
     "upload-revision"
