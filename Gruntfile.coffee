@@ -24,7 +24,6 @@ module.exports = (grunt) ->
     yeoman:
       app: require('./bower.json').appPath || 'app'
       dist: 'dist'
-    aws: grunt.file.readJSON("./aws-keys.json")
     bower: grunt.file.readJSON("./bower.json")
     watch:
       compass:
