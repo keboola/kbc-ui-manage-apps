@@ -41,7 +41,8 @@
         "karma-ng-html2js-preprocessor": "~0.1.0",
         "grunt-aws-s3": "~0.7.0",
         "grunt-git-describe": "~2.3.2",
-        "underscore.string": "~2.3.3"
+        "underscore.string": "~2.3.3",
+        "lodash": "~2.4.0"
     },
     "engines": {
         "node": ">=0.8.0"

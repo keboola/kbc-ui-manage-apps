@@ -13,6 +13,13 @@ module.exports = (grunt) ->
   mountFolder = (connect, dir) ->
     connect.static require("path").resolve(dir)
 
+
+  _ = require('lodash')
+
+  awsDefaults = {}
+  if grunt.file.exists('./aws-keys.json')
+    awsDefaults = grunt.file.readJSON('./aws-keys.json')
+
   grunt.initConfig(
     yeoman:
       app: require('./bower.json').appPath || 'app'
@@ -236,11 +243,11 @@ module.exports = (grunt) ->
     'aws_s3':
       release:
         options:
-          accessKeyId: "<%= aws.AWSAccessKeyId %>" # Use the variables
-          secretAccessKey: "<%= aws.AWSSecretKey %>" # You can also use env variables
-          bucket: "kbc-uis"
-          params:
-            CacheControl: 'max-age=315360000, public'
+          _.extend(awsDefaults,
+            bucket: "kbc-uis"
+            params:
+              CacheControl: 'max-age=315360000, public'
+          )
 
         files: []
 

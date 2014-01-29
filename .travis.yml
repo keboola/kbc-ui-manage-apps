@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- '0.10'
+notifications:
+  email: false
+branches:
+  only:
+  - master
+install:
+- time gem install compass
+- time npm install -g grunt-cli bower
+- time npm install
+- bower --version
+- time bower install --dev
+script: grunt
+after_success:
+- grunt upload-release
+env:
+  global:
+  - secure: ZoLcF/O8bqjI49z5fp3tRUdgsDiD7pv8+Sm+SCBvLnk7MR6vnhkqsFsPGk3Kq3zUTg5Oh6iGhF3tILDCvl2dAfPnW03+qTg71ToR5SJVzPdr2kLWBWNhkd1ToYjNCMN0z7zIO7zY62pf28Jk+PrMPz4BbDPw/Lp23UdMsmMOdV0=
+  - secure: tfPTUgAzbIIee4Xb7QSsDCrUQ794Egq93bZyNDu4cHksD0PYSzIzCyShVBEguECfBVde1vwP3Z5Rb+qRk3jLVDkjooaDcIr1azpQROunFc0KAh8NXtNQ1SVqdUj1voHtfxZmhvx2qUZkLJlcy27QXsDfb0Qff8/KKs4Zsk9wA6M=
