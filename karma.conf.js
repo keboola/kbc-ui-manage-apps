@@ -24,6 +24,7 @@ module.exports = function(config) {
               'app/components/angular-kb-accordion/dist/angular-kb-accordion.js',
             'app/components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js',
             'app/components/angular-ui-select2/src/select2.js',
+            'app/components/ngprogress/build/ngProgress.js',
             'app/components/underscore/underscore.js',
             'app/components/jquery/jquery.js',
             'app/scripts/*.coffee',

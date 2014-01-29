@@ -20,7 +20,14 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="version in app.versions">
-			<td>{{ version.version }}</td>
+			<td>
+                <span ng-hide="version.buildUrl">
+                    {{ version.version }}
+                </span>
+                <a href="{{ version.buildUrl }}" ng-show="version.buildUrl">
+                    {{ version.version }}
+                </a>
+            </td>
 			<td>{{ version.created | kbdate:'fullDate' }}</td>
 			<td>
 				<i class="fa fa-check-square-o" ng-show="version.isActive"></i>
