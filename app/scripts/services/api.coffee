@@ -3,6 +3,20 @@ angular.module('kbc.manageApps')
   .service 'kbManageAppsApi', ['$http', ($http) ->
 
     service =
+      apis: ->
+        $http(
+          url: '/admin/manage-apps/apis-list'
+          method: 'GET'
+        )
+        .then((response) ->
+          response.data.apis
+        )
+      saveApi: (api) ->
+        $http.post("/admin/manage-apps/api-update", api)
+      createApi: (api) ->
+        $http.post("/admin/manage-apps/api-create", api)
+      deleteApi: (apiId) ->
+        $http.delete("/admin/manage-apps/api-delete/id/#{apiId}")
       index: ->
         $http(
           url: '/admin/manage-apps/list'

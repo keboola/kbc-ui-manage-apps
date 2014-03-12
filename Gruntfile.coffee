@@ -52,7 +52,7 @@ module.exports = (grunt) ->
       proxies: [
         {
           context: '/admin'
-          host: 'connection.keboola.com'
+          host: 'martin-connection-devel.keboola.com'
           port: 443
           changeOrigin: true
           https: true

@@ -1,39 +1,10 @@
-<div class="page-header">
+<nav class="navbar navbar-default" role="navigation">
     <div class="container">
-        <h4>Manage apps</h4>
+        <ul class="nav navbar-nav">
+            <li ng-class="{ active: $state.includes('apps') }"><a ui-sref="apps">UI Applications</a></li>
+            <li ng-class="{ active: $state.includes('apis') }"><a ui-sref="apis">Apis</a></li>
+         </ul>
     </div>
-</div>
+</nav>
 
-<div class="container" ng-controller="AppController">
-    <div class="row well">
-
-        <div class="col-md-4">
-            <button class="btn btn-primary btn-sm" ng-click="registerNewAppModal()">
-                <i class="fa fa-plus"></i>
-                Register new application/version
-            </button>
-        </div>
-
-        <div class="col-md-7 form-inline">
-            <label class="control-label">Preview project</label>
-            <select id="previewProjectId"  style="width: 300px" ui-select2 placeholder="Choose project for preview..." ng-model="preview.projectId" >
-                <option ng-repeat="project in projects" value="{{ project.id }}">{{ project.name }}</option>
-            </select>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-
-            <ul class="nav nav-pills nav-stacked" ng-cloak>
-                <li ng-repeat="app in apps | orderBy:'stringId'" ng-class="{'active': app.id == currentApp}">
-                    <a ng-click="openApp(app.id)">{{ app.stringId }}</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-md-9">
-            <ng-view></ng-view>
-        </div>
-    </div>
-</div>
+<div ui-view></div>

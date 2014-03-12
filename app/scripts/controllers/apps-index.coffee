@@ -1,6 +1,6 @@
 
 angular.module('kbc.manageApps')
-  .controller('IndexController', [
+  .controller('AppsIndexController', [
     "$scope"
     ($scope) ->
 

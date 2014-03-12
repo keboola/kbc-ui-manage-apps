@@ -1,5 +1,5 @@
 angular.module('kbc.manageApps')
-.controller('AppDetailController', [
+.controller('AppsDetailController', [
     "$scope"
     "kbManageAppsApi"
     "app"

@@ -19,7 +19,6 @@ angular
   
   'ngResource'
   'ngSanitize'
-  'ngRoute'
 
   # demo application modules
   'kbc.manageApps.config'
@@ -35,15 +34,17 @@ angular
   # third party library modules
   'ui.bootstrap'
   'ui.select2'
+  'ui.router'
   'ngProgress'
 ])
 .config([
-  '$routeProvider'
+  '$stateProvider'
+  '$urlRouterProvider'
   '$locationProvider'
   '$tooltipProvider'
   'kbAppVersionProvider'
   'kbc.manageApps.config'
-  ($routeProvider, $locationProvider, $tooltipProvider, appVersionProvider, config) ->
+  ($stateProvider, $urlRouterProvider, $locationProvider, $tooltipProvider, appVersionProvider, config) ->
     appVersionProvider
     .setVersion(config.appVersion)
     .setBasePath(config.basePath)
@@ -52,21 +53,31 @@ angular
       appendToBody: true
     )
 
-    $routeProvider
-    .when('/',
-        templateUrl: appVersionProvider.versionUrl("views/pages/index.html")
-        controller: 'IndexController'
+    $urlRouterProvider.otherwise("/apps")
+
+    $stateProvider
+      .state('apps',
+        url: '/apps'
+        templateUrl: appVersionProvider.versionUrl("views/pages/apps.html")
+        controller: 'AppsController'
       )
-    .when('/apps/:id',
-      templateUrl: appVersionProvider.versionUrl("views/pages/app-detail.html")
-      controller: "AppDetailController"
-      resolve:
-        app: ["kbManageAppsApi", "$route", (api, $route) ->
-          api.detail($route.current.params.id)
-        ]
-    )
-    .otherwise(
-        redirectTo: '/'
+      .state('apps.app',
+        url: '/app/:id'
+        templateUrl: appVersionProvider.versionUrl("views/pages/app-detail.html")
+        controller: "AppsDetailController"
+        resolve:
+          app: ["kbManageAppsApi", "$stateParams", (api, $stateParams) ->
+            api.detail($stateParams.id)
+          ]
+      )
+      .state('apis',
+        url: '/apis'
+        templateUrl: appVersionProvider.versionUrl("views/pages/apis.html")
+        controller: 'ApisController'
+        resolve:
+          apis: ["kbManageAppsApi", (api) ->
+            api.apis()
+          ]
       )
 
     $locationProvider.html5Mode(false)
@@ -75,18 +86,18 @@ angular
 # initialization
 .run([
   '$rootScope'
-  'kbSapiErrorHandler'
-  'kbSapiService'
   'kbAppVersion'
   'kbc.manageApps.config'
-  '$route'
-  ($rootScope, storageErrorHandler, storageService, appVersion, appConfig, $route) ->
+  '$state'
+  '$stateParams'
+  ($rootScope,  appVersion, appConfig, $state, $stateParams) ->
 
     # put configs to rootScope to be simple accesible in all views and controllers
     $rootScope.appVersion = appVersion
     $rootScope.appConfig = appConfig
 
-    $route.reload()
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
 
 ])
 .run([
@@ -94,13 +105,13 @@ angular
     'ngProgress'
     ($rootScope, ngProgress) ->
 
-      $rootScope.$on '$routeChangeStart',  ->
+      $rootScope.$on '$stateChangeStart',  ->
         ngProgress.color('green')
         ngProgress.height(1)
         ngProgress.reset()
         ngProgress.start()
 
-      _.each ['$routeChangeSuccess', '$routeChangeError'], (event) ->
+      _.each ['$stateChangeSuccess', '$stateChangeError'], (event) ->
         $rootScope.$on event, ->
           ngProgress.complete()
 

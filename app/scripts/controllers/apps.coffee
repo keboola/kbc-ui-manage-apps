@@ -1,13 +1,12 @@
 angular.module('kbc.manageApps')
-.controller('AppController', [
+.controller('AppsController', [
     "$scope",
     "$rootScope",
     "kbManageAppsApi"
     "$location"
     "$modal"
     "kbAppVersion"
-    "$route"
-    ($scope, $rootScope, api, $location, $modal, appVersion, $route) ->
+    ($scope, $rootScope, api, $location, $modal, appVersion) ->
       $scope.apps = []
       $scope.projects = []
 
@@ -22,7 +21,7 @@ angular.module('kbc.manageApps')
         projectId: null
 
       $scope.openApp = (id) ->
-        $location.path("/apps/#{id}")
+        $location.path("/apps/app/#{id}")
 
       $scope.addApp = (app) ->
         foundApp = _.find($scope.apps, (checkApp) ->
@@ -37,12 +36,7 @@ angular.module('kbc.manageApps')
         ).result.then((result) ->
           $scope.addApp(result.app)
           $scope.openApp(result.app.id)
-          $route.reload()
         )
 
-
-      $scope.$on('$routeChangeSuccess', (event, route) ->
-        $scope.currentApp = route.params?.id
-      )
 
   ])
