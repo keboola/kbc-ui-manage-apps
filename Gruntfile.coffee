@@ -360,8 +360,6 @@ module.exports = (grunt) ->
     "clean:dist"
     "coffeelint"
     "coffee"
-    "connect:test"
-    "karma"
     "useminPrepare"
     "compass"
     "copy:styles"
