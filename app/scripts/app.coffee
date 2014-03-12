@@ -40,11 +40,12 @@ angular
 .config([
   '$stateProvider'
   '$urlRouterProvider'
+  '$uiViewScrollProvider'
   '$locationProvider'
   '$tooltipProvider'
   'kbAppVersionProvider'
   'kbc.manageApps.config'
-  ($stateProvider, $urlRouterProvider, $locationProvider, $tooltipProvider, appVersionProvider, config) ->
+  ($stateProvider, $urlRouterProvider, $uiViewScrollProvider, $locationProvider, $tooltipProvider, appVersionProvider, config) ->
     appVersionProvider
     .setVersion(config.appVersion)
     .setBasePath(config.basePath)
@@ -54,6 +55,8 @@ angular
     )
 
     $urlRouterProvider.otherwise("/apps")
+
+    $uiViewScrollProvider.useAnchorScroll()
 
     $stateProvider
       .state('apps',
@@ -80,6 +83,7 @@ angular
           ]
       )
 
+    
     $locationProvider.html5Mode(false)
 ])
 
