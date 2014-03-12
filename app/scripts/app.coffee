@@ -96,8 +96,8 @@ angular
     $rootScope.appVersion = appVersion
     $rootScope.appConfig = appConfig
 
-    $rootScope.$state = $state;
-    $rootScope.$stateParams = $stateParams;
+    $rootScope.$state = $state
+    $rootScope.$stateParams = $stateParams
 
 ])
 .run([
