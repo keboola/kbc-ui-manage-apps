@@ -27,6 +27,65 @@
 			</div>
 		</div>
 
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="name">Type</label>
+            <div class="col-sm-6">
+                <select ng-model="api.type">
+                    <option value="extractor">Extractor</option>
+                    <option value="writer">Writer</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="name">Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  id="name" placeholder="My extractor" required  ng-model="api.name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="name">Description</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  id="description" placeholder="My extractor description" required  ng-model="api.description">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-6">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="api.hasUI"> Has UI
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-6">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="api.hasRun"> Has Run
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="name">32px icon path</label>
+            <div class="col-sm-6">
+                <input type="url" class="form-control"  id="ico32"    ng-model="api.ico32">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="name">64px icon path</label>
+            <div class="col-sm-6">
+                <input type="url" class="form-control"  id="ico64"    ng-model="api.ico64">
+            </div>
+        </div>
+
 	</div>
 
 	<div class="modal-footer">

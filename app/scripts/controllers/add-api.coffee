@@ -8,6 +8,7 @@ angular.module('kbc.manageApps')
       $scope.api =
         id: ''
         uri: ''
+        type: 'extractor'
 
       $scope.save = (api) ->
         $scope.resetError()
