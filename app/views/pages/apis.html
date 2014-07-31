@@ -9,6 +9,7 @@
     <table class="table table-stripped">
         <thead>
             <tr>
+                <th></th>
                 <th>Component ID</th>
                 <th>Type</th>
                 <th>Name</th>
@@ -21,6 +22,9 @@
         </thead>
         <tbody>
             <tr ng-repeat="api in apis | orderBy:'id' track by api.id ">
+                <td>
+                    <img width="32" height="32" src="{{ api.ico32 }}" ng-show="api.ico32"/>
+                </td>
                 <td>{{ api.id }}</td>
                 <td>{{ api.type }}</td>
                 <td>{{ api.name }}</td>
