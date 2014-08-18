@@ -73,6 +73,22 @@
         </div>
 
         <div class="form-group">
+            <label class="control-label col-sm-4">
+                Icons Upload
+            </label>
+            <div class="col-sm-6">
+                <p class="help-block">
+                    <ul class="help-block">
+                        <li>Upload icon into <strong>kbc-static</strong> S3 bucket</li>
+                        <li>Icon path should be <strong>images/cloud-services/{component-id}-{icon-size}-{icon-version}.png</strong></li>
+                        <li><strong>Never</strong> overwrite existing icon, instead increment <strong>icon-version</strong></li>
+                    </ul>
+
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="control-label col-sm-4" for="name">32px icon path</label>
             <div class="col-sm-6">
                 <input type="url" class="form-control"  id="ico32"    ng-model="api.ico32">
