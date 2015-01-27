@@ -121,3 +121,28 @@ angular
 
   ])
 
+.directive 'kbJsonEdit', [->
+    restrict: 'A'
+    require: 'ngModel'
+    link: (scope, element, attrs, ctrl) ->
+
+      ctrl.$formatters.push (value) ->
+        console.log 'al', value
+        if value != null
+          angular.toJson value, true
+        else
+          ''
+
+      ctrl.$parsers.unshift (viewValue) ->
+        try
+          if viewValue
+            data = angular.fromJson viewValue
+          else
+            data = viewValue
+          ctrl.$setValidity 'kbJsonEdit', true
+          return data
+        catch error
+          ctrl.$setValidity 'kbJsonEdit', false
+          return undefined
+  ]
+
