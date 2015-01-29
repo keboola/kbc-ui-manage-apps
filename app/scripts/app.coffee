@@ -16,7 +16,7 @@ angular
 angular
 .module('kbc.manageApps', [
   # ng modules
-  
+
   'ngResource'
   'ngSanitize'
 
@@ -127,7 +127,6 @@ angular
     link: (scope, element, attrs, ctrl) ->
 
       ctrl.$formatters.push (value) ->
-        console.log 'al', value
         if value != null
           angular.toJson value, true
         else
