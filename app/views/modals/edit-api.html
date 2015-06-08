@@ -1,15 +1,15 @@
 <form name="form" class="form form-horizontal modal-form">
-	<div class="modal-header">
-		<button type="button" class="close" ng-click="close()">×</button>
-	  <h4 class="modal-title">
-			Edit component {{ api.id }}
-	  </h4>
-	</div>
-	<div class="modal-body">
-		<div class="alert alert-error" ng-show="error">
-		  <button type="button" class="close" ng-click="resetError()" >&times;</button>
-		  {{ error }}
-		</div>
+        <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">×</button>
+          <h4 class="modal-title">
+                        Edit component {{ api.id }}
+          </h4>
+        </div>
+        <div class="modal-body">
+                <div class="alert alert-error" ng-show="error">
+                  <button type="button" class="close" ng-click="resetError()" >&times;</button>
+                  {{ error }}
+                </div>
 
 
         <div class="form-group">
@@ -26,7 +26,8 @@
                     <option value="extractor">Extractor</option>
                     <option value="transformation">Transformation</option>
                     <option value="writer">Writer</option>
-										<option value="recipe">Recipe</option>
+                    <option value="application">Application</option>
+                    <option value="recipe">Recipe</option>
                     <option value="other">Other</option>
                 </select>
             </div>
@@ -36,9 +37,9 @@
             <label class="control-label col-sm-4" for="name">Name</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"  id="name" placeholder="Google Analytics"  required  ng-model="api.name">
-								<span class="help-block">
-									Should contain only name of service <strong>don't</strong> append extractor or writer to it ...
-								</span>
+                                                                <span class="help-block">
+                                                                        Should contain only name of service <strong>don't</strong> append extractor or writer to it ...
+                                                                </span>
             </div>
         </div>
 
@@ -46,9 +47,9 @@
             <label class="control-label col-sm-4" for="name">Description</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"  id="description" placeholder="Web analytics & reporting" ng-model="api.description">
-								<span class="help-block">
-									Use service claim, max. one sentence.
-								</span>
+                                                                <span class="help-block">
+                                                                        Use service claim, max. one sentence.
+                                                                </span>
             </div>
         </div>
 
@@ -115,8 +116,8 @@
 
   </div>
 
-	<div class="modal-footer">
-		<button class="btn btn-default" ng-click="close()" type="button">Close</button>
-		<button class="btn btn-primary"  ng-click="save(api)" ng-disabled="form.$invalid" type="submit">Save</button>
-	</div>
+        <div class="modal-footer">
+                <button class="btn btn-default" ng-click="close()" type="button">Close</button>
+                <button class="btn btn-primary"  ng-click="save(api)" ng-disabled="form.$invalid" type="submit">Save</button>
+        </div>
 </form>
