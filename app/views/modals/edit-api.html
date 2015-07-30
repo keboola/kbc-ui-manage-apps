@@ -20,6 +20,13 @@
         </div>
 
         <div class="form-group">
+              <label class="control-label col-sm-4" for="documentationUrl">Documentation URL</label>
+              <div class="col-sm-6">
+                <input type="url" class="form-control"  id="documentationUrl" placeholder="https://ex-sample.apiary.io"  ng-model="api.documentationUrl">
+              </div>
+        </div>
+
+        <div class="form-group">
             <label class="control-label col-sm-4" for="name">Type</label>
             <div class="col-sm-6">
                 <select ng-model="api.type" class="form-control">
@@ -111,6 +118,14 @@
           <div class="col-sm-6">
             <textarea class="form-control" rows="10" name="data" ng-model="api.data" kb-json-edit></textarea>
             <p class="help-block">Optional component JSON configuration</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="flags">Flags</label>
+          <div class="col-sm-6">
+            <textarea class="form-control" rows="10" name="data" ng-model="api.flags" kb-json-edit></textarea>
+            <p class="help-block">Array of string flags</p>
           </div>
         </div>
 
