@@ -17,6 +17,7 @@
                 <th>URL</th>
                 <th>Has UI</th>
                 <th>Has Run</th>
+                <th>Flags</th>
                 <th></th>
             </tr>
         </thead>
@@ -32,6 +33,11 @@
                 <td>{{ api.uri }}</td>
                 <td>{{ api.hasUI }}</td>
                 <td>{{ api.hasRun }}</td>
+                <td>
+                  <span ng-repeat="flag in api.flags">
+                    {{ flag }}
+                  </span>
+                </td>
                 <td>
                     <span class="pull-right">
                         <a class="btn btn-sm btn-default" ng-click="openEditModal(api)">
