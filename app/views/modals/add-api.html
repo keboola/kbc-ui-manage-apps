@@ -13,7 +13,7 @@
 
 
         <div class="form-group">
-            <label class="control-label col-sm-4" for="apiUrl">ID</label>
+            <label class="control-label col-sm-4" for="apiId">ID</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control" kb-focus id="apiId" placeholder="ex-google-analytics" required  ng-model="api.id">
             </div>
@@ -35,9 +35,9 @@
                 </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-4" for="name">Type</label>
+            <label class="control-label col-sm-4" for="type">Type</label>
             <div class="col-sm-6">
-              <select ng-model="api.type" class="form-control">
+              <select ng-model="api.type" id="type" class="form-control">
                     <option value="extractor">Extractor</option>
                     <option value="transformation">Transformation</option>
                     <option value="writer">Writer</option>
@@ -59,7 +59,7 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-4" for="name">Description</label>
+            <label class="control-label col-sm-4" for="description">Description</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"  id="description" placeholder="Web analytics & reporting" required  ng-model="api.description">
                                                                 <span class="help-block">
@@ -108,23 +108,23 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-4" for="name">32px icon path</label>
+            <label class="control-label col-sm-4" for="ico32">32px icon path</label>
             <div class="col-sm-6">
                 <input type="url" class="form-control"  id="ico32" ng-model="api.ico32">
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-4" for="name">64px icon path</label>
+            <label class="control-label col-sm-4" for="ico64">64px icon path</label>
             <div class="col-sm-6">
                 <input type="url" class="form-control"  id="ico64" ng-model="api.ico64">
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-sm-4" for="name">Data</label>
+            <label class="control-label col-sm-4" for="data">Data</label>
             <div class="col-sm-6">
-                <textarea class="form-control" rows="10" name="data" ng-model="api.data" kb-json-edit></textarea>
+                <textarea class="form-control" rows="10" id="data" ng-model="api.data" kb-json-edit></textarea>
                 <p class="help-block">Optional component JSON configuration</p>
             </div>
         </div>
@@ -132,8 +132,15 @@
         <div class="form-group">
           <label class="control-label col-sm-4" for="flags">Flags</label>
           <div class="col-sm-6">
-            <textarea class="form-control" rows="10" name="data" ng-model="api.flags" kb-json-edit></textarea>
+            <textarea class="form-control" rows="10" id="flags" ng-model="api.flags" kb-json-edit></textarea>
             <p class="help-block">Array of string flags</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-4" for="longDescription">Long description</label>
+          <div class="col-sm-6">
+            <textarea class="form-control" rows="10" id="longDescription" ng-model="api.longDescription" kb-json-edit></textarea>
           </div>
         </div>
 
