@@ -52,7 +52,7 @@ module.exports = (grunt) ->
       proxies: [
         {
           context: '/admin'
-          host: 'connection.keboola.com'
+          host: 'martin-connection-devel.keboola.com'
           port: 443
           changeOrigin: true
           https: true
@@ -341,7 +341,6 @@ module.exports = (grunt) ->
       "coffeelint:dist"
       "coffee:dist"
       "coffee:bootstrap"
-      "compass:server"
       "copy:styles"
       'configureProxies'
       "connect:livereload"
@@ -361,7 +360,6 @@ module.exports = (grunt) ->
     "coffeelint"
     "coffee"
     "useminPrepare"
-    "compass"
     "copy:styles"
     "imagemin",
     "concat"

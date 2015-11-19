@@ -11,6 +11,19 @@ angular.module('kbc.manageApps')
         .then((response) ->
           response.data.apis
         )
+
+      tokens: ->
+        $http(
+          url: '/admin/manage-apps/tokens-list'
+          method: 'GET'
+        )
+        .then((response) ->
+          response.data.tokens
+        )
+      createToken: (token) ->
+        $http.post("/admin/manage-apps/token-create", token)
+      deleteToken: (tokenId) ->
+        $http.delete("/admin/manage-apps/token-delete/id/#{tokenId}")
       saveApi: (api) ->
         $http.post("/admin/manage-apps/api-update", api)
       createApi: (api) ->
@@ -35,7 +48,7 @@ angular.module('kbc.manageApps')
         $http.post('/admin/manage-apps/update', data)
       register: (data) ->
         $http.post('/admin/manage-apps/register', data)
-      
+
     service
   ]
 

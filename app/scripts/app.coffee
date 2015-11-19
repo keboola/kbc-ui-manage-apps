@@ -82,6 +82,15 @@ angular
             api.apis()
           ]
       )
+      .state('tokens',
+        url: '/tokens'
+        templateUrl: appVersionProvider.versionUrl("views/pages/tokens.html")
+        controller: 'TokensController'
+        resolve:
+          tokens: ["kbManageAppsApi", (api) ->
+            api.tokens()
+          ]
+      )
 
 
     $locationProvider.html5Mode(false)

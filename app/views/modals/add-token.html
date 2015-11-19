@@ -1,0 +1,37 @@
+<form name="form" class="form form-horizontal modal-form">
+        <div class="modal-header">
+                <button type="button" class="close" ng-click="close()">×</button>
+          <h4 class="modal-title">
+            Add new token
+          </h4>
+        </div>
+        <div class="modal-body">
+                <div class="alert alert-danger" ng-show="error">
+                  <button type="button" class="close" ng-click="resetError()" >&times;</button>
+                  {{ error }}
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-4" for="description">Description</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" kb-focus id="description" placeholder="My token"  ng-model="token.description">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                        <label class="control-label col-sm-4" for="scopes">Scopes</label>
+                        <div class="col-sm-6">
+                          <input type="text" class="form-control"  id="scopes" placeholder="provisioning:read_something"  ng-model="token.scopes">
+                          <p class="help-block">Comma separated list of scopes.</p>
+                        </div>
+                </div>
+
+        </div>
+
+        <div class="modal-footer">
+                <button class="btn btn-default" ng-click="close()" type="button">Close</button>
+                <button class="btn btn-primary"  ng-click="save(token)" ng-disabled="form.$invalid" type="submit">Save</button>
+        </div>
+</form>

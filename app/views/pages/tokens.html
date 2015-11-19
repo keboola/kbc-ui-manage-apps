@@ -1,0 +1,55 @@
+
+<div class="container-fluid apis">
+    <button class="btn btn-primary btn-sm" ng-click="addNewTokenModal()">
+      <i class="fa fa-plus"></i>
+      Add new token
+    </button>
+
+
+    <div class="alert alert-success" ng-show="newToken.id">
+      Token was created. Make sure to copy your new token now. You won’t be able to see it again!
+      <p>Token: <strong>{{ newToken.token }}</strong></p>
+    </div>
+
+
+    <table class="table table-stripped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Created</th>
+        <th>Creator</th>
+        <th>Scopes</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="token in tokens track by token.id">
+        <td>{{ token.id }}</td>
+        <td>{{ token.description }}</td>
+        <td>{{ token.created | kbdate:'fullDate' }}</td>
+        <td>{{ token.creator.name }}</td>
+        <td>
+          <span ng-repeat="scope in token.scopes" style="padding-right: 10px;">{{ scope }}</span>
+        </td>
+        <td>
+          <span class="pull-right">
+
+            <a class="btn btn-sm btn-default"
+               kb-confirm
+               header="Delete API"
+               message="Are you sure you want to delete <strong>{{ token.id }}</strong>?"
+               confirm-label="Delete"
+               confirm-type="danger"
+               on-confirm="deleteToken(token)"
+              >
+              <i class="fa fa-trash-o fa-fw"></i>
+            </a>
+        </span>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+</div>
