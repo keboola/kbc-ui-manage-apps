@@ -17,8 +17,9 @@
       <tr>
         <th>ID</th>
         <th>Description</th>
-        <th>Created</th>
         <th>Creator</th>
+        <th>Created</th>
+        <th>Last Used</th>
         <th>Scopes</th>
         <th></th>
       </tr>
@@ -27,8 +28,9 @@
       <tr ng-repeat="token in tokens track by token.id">
         <td>{{ token.id }}</td>
         <td>{{ token.description }}</td>
-        <td>{{ token.created | kbdate:'fullDate' }}</td>
         <td>{{ token.creator.name }}</td>
+        <td>{{ token.created | kbdate:'fullDate' }}</td>
+        <td><kb-datetime datetime="token.lastUsed" empty-value="N/A"/></td>
         <td>
           <span ng-repeat="scope in token.scopes" style="padding-right: 10px;">{{ scope }}</span>
         </td>
