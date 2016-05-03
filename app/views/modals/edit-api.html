@@ -126,6 +126,24 @@
             </div>
         </div>
 
+
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="data">Schema</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" rows="10" id="configurationSchema" ng-model="api.configurationSchema" kb-json-edit></textarea>
+                <p class="help-block">Configuration JSON schema, optional</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-4" for="data">Empty configuration</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" rows="10" id="emptyConfiguration" ng-model="api.emptyConfiguration" kb-json-edit></textarea>
+                <p class="help-block">Empty configuration JSON, optional</p>
+            </div>
+        </div>
+
+
   </div>
 
         <div class="modal-footer">
