@@ -25,9 +25,9 @@ angular.module('kbc.manageApps')
       deleteToken: (tokenId) ->
         $http.delete("/admin/manage-apps/token-delete/id/#{tokenId}")
       saveApi: (api) ->
-        $http.post("/admin/manage-apps/api-update", api)
+        $http.post("/admin/manage-apps/api-update", JSON.stringify(api))
       createApi: (api) ->
-        $http.post("/admin/manage-apps/api-create", api)
+        $http.post("/admin/manage-apps/api-create", JSON.stringify(api))
       deleteApi: (apiId) ->
         $http.delete("/admin/manage-apps/api-delete/id/#{apiId}")
       index: ->

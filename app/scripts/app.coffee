@@ -137,7 +137,7 @@ angular
 
       ctrl.$formatters.push (value) ->
         if value != null
-          angular.toJson value, true
+          JSON.stringify value, null, 2
         else
           ''
 
