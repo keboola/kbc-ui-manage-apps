@@ -42,7 +42,7 @@
         "grunt-aws-s3": "~0.7.0",
         "grunt-git-describe": "~2.3.2",
         "underscore.string": "~2.3.3",
-        "lodash": "~2.4.0"
+        "lodash": "~4.17.19"
     },
     "engines": {
         "node": ">=0.8.0"
